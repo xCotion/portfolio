@@ -149,3 +149,58 @@ background: linear-gradient(135deg,
 - Maintain WCAG 2.1 AA standard contrast ratios
 - Ensure text remains readable on all background variations
 - Provide sufficient color contrast for interactive elements
+
+# User Experience Flow
+
+## Hero Section Experience
+
+### Initial Load
+- **Hero Text**
+  - Main Headline: "Crafting Digital Excellence"
+  - Subtitle: "Transforming ideas into elegant solutions through code and creativity"
+  - Specialties: "iOS Development • Creative Media • AI Integration"
+  - Text Appearance: Crisp, commanding presence with perfect contrast against the background
+
+### Floating Cards Animation
+- **Initial State**
+  - Position: Scattered in 3D space, predominantly on the left side
+  - Movement: Independent, gentle drifting motions
+  - Rotation: Slow, continuous 3D rotation showing all sides
+  - Depth: ~10px thickness for authentic 3D appearance
+
+### Card Design
+- **Structure**
+  - Top: Icon/visual element
+  - Middle: Title (e.g., "iOS Development")
+  - Bottom: Brief subtitle and "Learn More" button
+  - Physical Properties: 3D depth with visible thickness
+  - Material: Glassmorphic effect with subtle reflections
+
+## Scroll Transition
+
+### Animation Sequence
+- **Trigger**: User scroll initiation
+- **Card Movement**
+  - Transform: From scattered floating state to organized carousel
+  - Path: Unique, flowing trajectories for each card
+  - Timing: Smooth, choreographed motion
+
+### Skills Section Transformation
+- **Final State**
+  - Header: "Skills & Expertise Specialized in creating innovative solutions across multiple domains"
+  - Layout: Three-card carousel view
+  - Navigation: Subtle arrow buttons on both sides
+  - Total Cards: 6 (navigable through carousel)
+  - Movement: Subtle floating animation retained in carousel state
+
+### Interactive Elements
+- **Carousel Controls**
+  - Arrow Buttons: Subtle yet visible navigation elements
+  - Transition: Smooth card switching animation
+  - State Indication: Visual feedback for current position
+
+### Motion Design Notes
+- Maintain fluid, space-like movement throughout
+- Ensure transitions feel natural and unforced
+- Balance between engaging motion and readability
+- Implement reduced motion alternatives for accessibility
