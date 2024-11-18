@@ -56,36 +56,37 @@ function Card({ skill, otherSkills, scrollYProgress }: {
   
   // Calculate final positions based on index
   const index = skills.findIndex(s => s.id === skill.id);
-  const row = Math.floor(index / 3);
-  const col = index % 3;
+  const isBackRow = index >= 3;
+  const columnIndex = index % 3;
+  const spacing = 320; // Spacing between cards
   
-  // Define final positions for horizontal stack
-  const finalX = col * 400 - 400; // Centered, with 400px spacing
-  const finalY = 100; // Reduced Y position to be just below the subtitle
-  const finalZ = row * -400; // Stack cards behind each other with 400px spacing
+  // Center the cards horizontally and position them higher
+  const finalX = (columnIndex - 1) * spacing; // Center 3 cards
+  const finalY = -20; // Move cards up closer to the title
+  const finalZ = isBackRow ? -200 : 0; // Back row positioned behind front row
 
   // Create spring animations for smoother transitions
   const springConfig = { 
-    stiffness: 50,
-    damping: 20,
-    mass: 2,
-    restDelta: 0.01
+    stiffness: 60,
+    damping: 25,
+    mass: 1.5,
+    restDelta: 0.001
   };
   
-  // Transform initial positions to final positions with a wider scroll range
-  const progress = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
+  // Transform initial positions to final positions with optimized scroll range
+  const progress = useTransform(scrollYProgress, [0, 0.5], [0, 1]); // Complete animation earlier
   
   // Smooth out the progress curve
   const smoothProgress = useSpring(progress, {
-    stiffness: 30,
-    damping: 25,
-    mass: 3
+    stiffness: 40,
+    damping: 30,
+    mass: 2
   });
 
-  // Create intermediate positions for a curved path
-  const xProgress = useTransform(smoothProgress, [0, 0.4, 1], [0, 0.2, 1]);
-  const yProgress = useTransform(smoothProgress, [0, 0.4, 1], [0, 0.1, 1]);
-  const zProgress = useTransform(smoothProgress, [0, 0.4, 1], [0, 0.3, 1]);
+  // Create intermediate positions for a natural path
+  const xProgress = useTransform(smoothProgress, [0, 0.3, 1], [0, 0.4, 1]);
+  const yProgress = useTransform(smoothProgress, [0, 0.5, 1], [0, 0.7, 1]);
+  const zProgress = useTransform(smoothProgress, [0, 0.4, 1], [0, 0.5, 1]);
   
   // Calculate intermediate positions
   const xPath = useTransform(xProgress, [0, 1], [skill.initialPosition.x, finalX]);
@@ -97,13 +98,13 @@ function Card({ skill, otherSkills, scrollYProgress }: {
   const y = useSpring(yPath, springConfig);
   const z = useSpring(zPath, springConfig);
   
-  // Scale and opacity based on position with smoother transitions
+  // Scale and opacity based on position
   const scale = useSpring(
-    useTransform(smoothProgress, [0, 1], [1, row === 0 ? 1 : 0.8]),
+    useTransform(smoothProgress, [0, 1], [1, isBackRow ? 0.9 : 1]),
     springConfig
   );
   const opacity = useSpring(
-    useTransform(smoothProgress, [0, 1], [1, row === 0 ? 1 : 0.6]),
+    useTransform(smoothProgress, [0, 1], [1, isBackRow ? 0.6 : 1]),
     springConfig
   );
 
