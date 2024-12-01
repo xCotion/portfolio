@@ -16,7 +16,7 @@ const Skills = () => {
             Skills & Expertise
           </h2>
           <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-            A curated collection of technologies and tools I've mastered throughout my journey
+            A curated collection of technologies and tools I&apos;ve mastered throughout my journey
           </p>
         </motion.div>
       </div>

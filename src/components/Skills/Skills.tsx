@@ -32,7 +32,7 @@ export const Skills = () => {
               Skills & Expertise
             </h2>
             <p className="mt-4 text-lg font-light text-[var(--text-secondary)] text-center max-w-2xl mx-auto">
-              A curated collection of technologies and tools I've mastered throughout my journey
+              A curated collection of technologies and tools I&apos;ve mastered throughout my journey
             </p>
           </div>
         </div>
